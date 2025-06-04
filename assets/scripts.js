@@ -137,5 +137,5 @@ loadingTask.promise.then((pdf) => {
     viewer.setDocument(pdf);
 
     // Set zoom after document is loaded
-    viewer.currentScale = 'page-width';  // or 'page-fit'
+    viewer.currentScaleValue = 'page-width';  // or 'page-fit'
 });
