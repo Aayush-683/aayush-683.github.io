@@ -537,7 +537,7 @@ body.menu-open .mobile-nav {
 #pdf-container {
 	/* width: 100%;
 	max-width: 800px; */
-	height: 90vh;
+	height: 100%;
 	overflow: auto;
     position: absolute;
 
