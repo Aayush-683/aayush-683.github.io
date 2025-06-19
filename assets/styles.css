@@ -3,7 +3,7 @@
 	/* Dark Mode Colors */
 	--color-bg-primary-dark: #0e0e0e;
 	--color-bg-secondary-dark: #1a1a1a;
-    --color-bg-secondary-dark-translucent: rgba(26, 26, 26, 0.95); /* For header background */
+	--color-bg-secondary-dark-translucent: rgba(26, 26, 26, 0.95); /* For header background */
 	--color-text-primary-dark: #f2f2f2;
 	--color-text-secondary-dark: #b0b0b0;
 	--color-border-dark: #333;
@@ -15,7 +15,7 @@
 	/* Light Mode Colors */
 	--color-bg-primary-light: #f9f9f9;
 	--color-bg-secondary-light: #ffffff;
-    --color-bg-secondary-light-translucent: rgba(255, 255, 255, 0.95); /* For header background */
+	--color-bg-secondary-light-translucent: rgba(255, 255, 255, 0.95); /* For header background */
 	--color-text-primary-light: #222;
 	--color-text-secondary-light: #555;
 	--color-border-light: #e0e0e0;
@@ -330,7 +330,17 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 2rem;
+	gap: 1rem;
+
+	p {
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	h3 {
+		width: 100%;
+	}
 }
 body.light .resume-viewer-card {
 	background: var(--color-bg-secondary-light);
@@ -520,9 +530,9 @@ body.menu-open .mobile-nav {
 		padding: 1.5rem;
 	}
 
-    #pdf-container {
-        width: 100%;
-    }
+	#pdf-container {
+		width: 100%;
+	}
 }
 
 @media (max-width: 480px) {
@@ -539,7 +549,7 @@ body.menu-open .mobile-nav {
 	max-width: 800px; */
 	height: 100%;
 	overflow: auto;
-    position: absolute;
+	position: absolute;
 
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none; /* IE 10+ */
@@ -558,3 +568,64 @@ body.menu-open .mobile-nav {
 	overflow: visible !important;
 	width: 100%;
 }
+
+.content-section {
+	margin: 4rem 0;
+	padding: 2rem;
+	background-color: var(--color-bg-secondary-dark);
+	border-radius: 16px;
+	box-shadow: 0 6px 20px var(--color-shadow-dark);
+	transition: all 0.3s ease-in-out;
+}
+body.light .content-section {
+	background-color: var(--color-bg-secondary-light);
+	box-shadow: 0 6px 20px var(--color-shadow-light);
+}
+
+.grid {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	margin-top: 2rem;
+}
+
+.card {
+	padding: 1.5rem;
+	background: var(--color-bg-secondary-dark);
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	ul {
+		list-style: inside;
+	}
+}
+.card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+body.light .card {
+	background: var(--color-bg-secondary-light);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card a {
+	color: var(--color-accent-primary);
+	font-weight: 600;
+}
+.card a:hover {
+	text-decoration: underline;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.resume-viewer-card img {
+	margin: 4px;
+	vertical-align: middle;
+}
+  

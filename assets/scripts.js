@@ -112,7 +112,7 @@ if (typeof pdfjsLib === 'undefined' || typeof pdfjsViewer === 'undefined') {
     console.error('PDF.js library is not loaded.');
 }
 
-const pdfUrl = 'https://aayush-683.github.io/resume/assets/resume.pdf';
+const pdfUrl = 'https://aayush-683.github.io/assets/resume.pdf';
 
 const CMAP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/';
 const CMAP_PACKED = true;
