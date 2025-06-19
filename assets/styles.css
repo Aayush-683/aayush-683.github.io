@@ -45,6 +45,7 @@
 	--spacing-unit: 0.5rem;
 	--padding-section: 4rem 2rem;
 	--max-width: 960px;
+	--max-width-main: 1200px;
 }
 
 /* Base styles */
@@ -96,6 +97,12 @@ a:hover {
 
 .container {
 	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 2rem;
+}
+
+.container-main {
+	max-width: var(--max-width-main);
 	margin: 0 auto;
 	padding: 0 2rem;
 }
@@ -315,6 +322,13 @@ body.light .hero-section p {
 	box-shadow: 0 3px 8px rgba(33, 136, 56, 0.5);
 }
 
+.hero-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+
 /* Main Content Area */
 main {
 	padding-bottom: 4rem;
@@ -335,6 +349,7 @@ main {
 	p {
 		width: 100%;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: flex-start;
 	}
 
@@ -489,6 +504,106 @@ body.menu-open .mobile-nav {
 	margin-top: 1rem;
 }
 
+#pdf-container {
+	/* width: 100%;
+	max-width: 800px; */
+	height: 100%;
+	overflow: auto;
+	position: absolute;
+
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE 10+ */
+}
+
+#pdf-container::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}
+
+/* This is often needed for PDF.js viewer to layout pages */
+.pdfViewer {
+	direction: ltr;
+	position: relative;
+	user-select: text;
+	-webkit-user-select: text;
+	overflow: visible !important;
+	width: 100%;
+}
+
+.content-section {
+	margin: 4rem 0;
+	padding: 2rem;
+	background-color: var(--color-bg-secondary-dark);
+	border-radius: 16px;
+	box-shadow: 0 6px 20px var(--color-shadow-dark);
+	transition: all 0.3s ease-in-out;
+}
+body.light .content-section {
+	background-color: var(--color-bg-secondary-light);
+	box-shadow: 0 6px 20px var(--color-shadow-light);
+}
+
+.about-me {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+	grid-auto-rows: minmax(200px, auto);
+	gap: 2rem;
+	padding: 1rem;
+}
+
+.card {
+	padding: 1.5rem;
+	background: var(--color-bg-secondary-dark);
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	ul {
+		margin-left: 5%;
+	}
+}
+.card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+body.light .card {
+	background: var(--color-bg-secondary-light);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.card a {
+	color: var(--color-accent-primary);
+	font-weight: 600;
+}
+.card a:hover {
+	text-decoration: underline;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.resume-viewer-card img {
+	margin: 4px;
+	vertical-align: middle;
+}
+
+
+/
 @media (max-width: 768px) {
 	.desktop-only {
 		display: none !important; /* Hide desktop elements */
@@ -530,6 +645,15 @@ body.menu-open .mobile-nav {
 		padding: 1.5rem;
 	}
 
+	.hero-buttons {
+		flex-direction: column; /* Stack buttons on mobile */
+		gap: 1rem;
+	}
+
+	.grid {
+		padding: 0; /* Adjust grid padding for mobile */
+	}
+
 	#pdf-container {
 		width: 100%;
 	}
@@ -543,89 +667,3 @@ body.menu-open .mobile-nav {
 		font-size: 1.5rem;
 	}
 }
-
-#pdf-container {
-	/* width: 100%;
-	max-width: 800px; */
-	height: 100%;
-	overflow: auto;
-	position: absolute;
-
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* IE 10+ */
-}
-
-#pdf-container::-webkit-scrollbar {
-	display: none; /* Safari and Chrome */
-}
-
-/* This is often needed for PDF.js viewer to layout pages */
-.pdfViewer {
-	direction: ltr;
-	position: relative;
-	user-select: text;
-	-webkit-user-select: text;
-	overflow: visible !important;
-	width: 100%;
-}
-
-.content-section {
-	margin: 4rem 0;
-	padding: 2rem;
-	background-color: var(--color-bg-secondary-dark);
-	border-radius: 16px;
-	box-shadow: 0 6px 20px var(--color-shadow-dark);
-	transition: all 0.3s ease-in-out;
-}
-body.light .content-section {
-	background-color: var(--color-bg-secondary-light);
-	box-shadow: 0 6px 20px var(--color-shadow-light);
-}
-
-.grid {
-	display: grid;
-	gap: 2rem;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	margin-top: 2rem;
-}
-
-.card {
-	padding: 1.5rem;
-	background: var(--color-bg-secondary-dark);
-	border-radius: 12px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	ul {
-		list-style: inside;
-	}
-}
-.card:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-}
-body.light .card {
-	background: var(--color-bg-secondary-light);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card a {
-	color: var(--color-accent-primary);
-	font-weight: 600;
-}
-.card a:hover {
-	text-decoration: underline;
-}
-
-.center-text {
-	text-align: center;
-}
-
-.resume-viewer-card img {
-	margin: 4px;
-	vertical-align: middle;
-}
-  

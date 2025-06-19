@@ -79,19 +79,57 @@ themeSwitchMobile.addEventListener('change', () => {
     applyTheme(themeSwitchMobile.checked ? 'light' : 'dark');
 });
 
-// Handle iframe loading for spinner
-resumeIframe.onload = () => {
-    iframeSpinner.style.display = 'none';
-    resumeIframe.classList.add('loaded'); // Apply opacity transition
-};
-
-// Fallback for immediate iframe content if load event doesn't fire fast enough
-setTimeout(() => {
-    if (!resumeIframe.classList.contains('loaded')) {
+// Handle iframe loading for spinner on resume page
+if (resumeIframe) {
+    resumeIframe.onload = () => {
         iframeSpinner.style.display = 'none';
-        resumeIframe.classList.add('loaded');
+        resumeIframe.classList.add('loaded'); // Apply opacity transition
+    };
+
+    // Fallback for immediate iframe content if load event doesn't fire fast enough
+    setTimeout(() => {
+        if (!resumeIframe.classList.contains('loaded')) {
+            iframeSpinner.style.display = 'none';
+            resumeIframe.classList.add('loaded');
+        }
+    }, 1000);
+
+    // PDF.js setup
+
+    // Ensure PDF.js is loaded
+    if (typeof pdfjsLib === 'undefined' || typeof pdfjsViewer === 'undefined') {
+        console.error('PDF.js library is not loaded.');
     }
-}, 1000);
+
+    const pdfUrl = 'https://aayush-683.github.io/assets/resume.pdf';
+
+    const CMAP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/';
+    const CMAP_PACKED = true;
+
+    const loadingTask = pdfjsLib.getDocument({
+        url: pdfUrl,
+        cMapUrl: CMAP_URL,
+        cMapPacked: CMAP_PACKED
+    });
+
+    loadingTask.promise.then((pdf) => {
+        const eventBus = new pdfjsViewer.EventBus();
+        const linkService = new pdfjsViewer.PDFLinkService({ eventBus });
+
+        const viewer = new pdfjsViewer.PDFViewer({
+            container: document.getElementById('pdf-container'),
+            eventBus,
+            linkService,
+        });
+
+        linkService.setViewer(viewer);
+        viewer.setDocument(pdf);
+
+        // Set zoom after document is loaded
+        viewer.currentScaleValue = 'page-width';  // or 'page-fit'
+    });
+
+}
 
 // Mobile menu toggle functionality
 menuToggle.addEventListener('click', () => {
@@ -103,39 +141,4 @@ mobileNav.addEventListener('click', (event) => {
     if (event.target === mobileNav) {
         body.classList.remove('menu-open');
     }
-});
-
-// PDF.js setup
-
-// Ensure PDF.js is loaded
-if (typeof pdfjsLib === 'undefined' || typeof pdfjsViewer === 'undefined') {
-    console.error('PDF.js library is not loaded.');
-}
-
-const pdfUrl = 'https://aayush-683.github.io/assets/resume.pdf';
-
-const CMAP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/';
-const CMAP_PACKED = true;
-
-const loadingTask = pdfjsLib.getDocument({
-    url: pdfUrl,
-    cMapUrl: CMAP_URL,
-    cMapPacked: CMAP_PACKED
-});
-
-loadingTask.promise.then((pdf) => {
-    const eventBus = new pdfjsViewer.EventBus();
-    const linkService = new pdfjsViewer.PDFLinkService({ eventBus });
-
-    const viewer = new pdfjsViewer.PDFViewer({
-        container: document.getElementById('pdf-container'),
-        eventBus,
-        linkService,
-    });
-
-    linkService.setViewer(viewer);
-    viewer.setDocument(pdf);
-
-    // Set zoom after document is loaded
-    viewer.currentScaleValue = 'page-width';  // or 'page-fit'
 });
