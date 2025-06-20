@@ -541,6 +541,12 @@ body.menu-open .mobile-nav {
 	border-radius: 16px;
 	box-shadow: 0 6px 20px var(--color-shadow-dark);
 	transition: all 0.3s ease-in-out;
+
+	h2 {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
 }
 body.light .content-section {
 	background-color: var(--color-bg-secondary-light);
