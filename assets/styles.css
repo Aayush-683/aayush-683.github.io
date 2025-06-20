@@ -313,6 +313,7 @@ body.light .hero-section p {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
+	justify-content: center;
 }
 
 .hero-section .download-btn:hover {
