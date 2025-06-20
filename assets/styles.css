@@ -36,7 +36,7 @@
 
 	/* Typography */
 	--font-family-primary: 'Inter', sans-serif;
-	--font-size-body: 1rem;
+	--font-size-body: 0.5rem;
 	--font-size-heading-large: 2.5rem;
 	--font-size-heading-medium: 1.8rem;
 	--font-size-heading-small: 1.25rem;
@@ -309,6 +309,10 @@ body.light .hero-section p {
 	transition: all 0.3s ease;
 	position: relative;
 	overflow: hidden;
+
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .hero-section .download-btn:hover {
@@ -602,6 +606,10 @@ body.light .card {
 	vertical-align: middle;
 }
 
+.add-gap {
+	margin-right: 20px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
 	.desktop-only {
@@ -651,6 +659,10 @@ body.light .card {
 
 	.grid {
 		padding: 0; /* Adjust grid padding for mobile */
+	}
+
+	.add-gap {
+		margin-right: 0; /* Remove right margin on mobile */
 	}
 
 	#pdf-container {
