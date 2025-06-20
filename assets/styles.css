@@ -602,8 +602,7 @@ body.light .card {
 	vertical-align: middle;
 }
 
-
-/
+/* Responsive Styles */
 @media (max-width: 768px) {
 	.desktop-only {
 		display: none !important; /* Hide desktop elements */
