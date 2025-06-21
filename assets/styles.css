@@ -560,9 +560,13 @@ body.light .content-section {
 }
 
 .grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
-	grid-auto-rows: minmax(200px, auto);
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+	width: 100%;
+	max-width: 1200px;
 	gap: 2rem;
 	padding: 1rem;
 }
@@ -576,6 +580,8 @@ body.light .content-section {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+
+	max-width: 45%; /* Limit card width */
 
 	ul {
 		margin-left: 5%;
@@ -665,11 +671,26 @@ body.light .card {
 	}
 
 	.grid {
-		padding: 0; /* Adjust grid padding for mobile */
+		display: flex;
+		flex-direction: column; /* Stack cards vertically on mobile */
+		gap: 1.5rem;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 1rem 0; /* Add padding for mobile */
+	}
+
+	.card {
+		max-width: 90%; /* Full width on mobile */
 	}
 
 	.add-gap {
 		margin-right: 0; /* Remove right margin on mobile */
+	}
+
+	.content-section {
+		padding: 1.5rem;
+		margin: 2rem 0; /* Adjust margin for mobile */
 	}
 
 	#pdf-container {
@@ -681,6 +702,27 @@ body.light .card {
 	.container {
 		padding: 0 1rem;
 	}
+
+	.container-main {
+		padding: 0 1rem;
+	}
+
+	.card {
+		max-width: 100%; /* Full width on very small screens */
+	}
+
+	.hero-section h1 {
+		font-size: 1.5rem; /* Smaller heading on very small screens */
+	}
+
+	h2 {
+		font-size: 1.5rem; /* Adjust h2 size for smaller screens */
+	}
+
+	h3 {
+		font-size: 1.25rem; /* Adjust h3 size for smaller screens */
+	}
+
 	.name {
 		font-size: 1.5rem;
 	}
