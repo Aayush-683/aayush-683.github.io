@@ -623,6 +623,44 @@ body.light .card {
 	margin-right: 20px;
 }
 
+.site-footer {
+	padding: 2rem 0;
+	text-align: center;
+	background-color: var(--bg);
+	border-top: 1px solid var(--border-color);
+	color: var(--text-secondary);
+}
+
+.footer-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding: 0 1.5rem;
+}
+
+.site-footer .contacts {
+	display: flex;
+	gap: 1.2rem;
+}
+
+.site-footer .footer-text {
+	color: var(--text-secondary);
+	font-size: 1rem;
+}
+
+.site-footer .theme-icon {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+	transition: transform 0.2s ease;
+}
+
+.site-footer .theme-icon:hover {
+	transform: scale(1.1);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
 	.desktop-only {
@@ -696,6 +734,14 @@ body.light .card {
 	#pdf-container {
 		width: 100%;
 	}
+
+	footer {
+		margin-top: 2rem; /* Adjust footer margin for mobile */
+	}
+
+	.site-footer {
+		padding: 1.5rem 1rem; /* Adjust footer padding for mobile */
+	}
 }
 
 @media (max-width: 480px) {
@@ -725,5 +771,29 @@ body.light .card {
 
 	.name {
 		font-size: 1.5rem;
+	}
+
+	.resume-viewer-card {
+		padding: 1rem; /* Reduce padding on very small screens */
+	}
+
+	footer {
+		margin-top: 1rem; /* Reduce footer margin on very small screens */
+	}
+
+	.site-footer {
+		padding: 0.5rem
+	}
+
+	.site-footer .footer-text {
+		font-size: 0.9rem; /* Smaller footer text */
+	}
+
+	.footer-container {
+		flex-direction: column; /* Stack footer items on small screens */
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 0.5rem
 	}
 }
