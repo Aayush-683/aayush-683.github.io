@@ -96,7 +96,9 @@
 		<code><span>this_page</span>.<em>not_found</em> = true;</code>
 		<code><span>if</span> (<b>you_spelt_it_wrong</b>) <span>try_again()</span>;</code>
 		<code><span>else if (<b>i_screwed_up</b>)</span> <em>alert</em>(<i>"I'm really sorry about that."</i>);</code>
-		<div style="text-align: center"><a href="/">← HOME</a></div>
+		<div style="text-align: center">
+			<a href="/">← HOME <span id="autoLaunchText"></span></a>
+		</div>
 
 		<script>
 			function type(n, t) {
@@ -119,6 +121,20 @@
 			type(0, 0);
 			type(1, 2000);
 			type(2, 4500);
+
+			setTimeout(() => {
+				var autoLaunchText = document.getElementById('autoLaunchText');
+				autoLaunchText.innerHTML = `Auto Launching in <i id="time">10</i>..`;
+				setInterval(function () {
+					var time = document.getElementById('time');
+					var t = parseInt(time.innerHTML);
+					if (t > 0) {
+						time.innerHTML = t - 1;
+					} else {
+						window.location.href = '/';
+					}
+				}, 1000);
+			}, 10000);
 		</script>
 	</body>
 </html>
