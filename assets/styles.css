@@ -600,6 +600,7 @@ body.light .card {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+	height: 50px; /* Ensure consistent height */
 }
 
 .card a {
@@ -659,6 +660,15 @@ body.light .card {
 
 .site-footer .theme-icon:hover {
 	transform: scale(1.1);
+}
+
+.card-title svg {
+	width: auto;
+	min-width: 50px;
+	min-height: 50px;
+	height: 40%;
+	fill: currentColor;
+	transition: fill 0.25s ease;
 }
 
 /* Responsive Styles */
@@ -742,6 +752,17 @@ body.light .card {
 	.site-footer {
 		padding: 1.5rem 1rem; /* Adjust footer padding for mobile */
 	}
+
+	.card-title {
+		height: auto; /* Allow height to adjust based on content */
+	}
+
+	.card-title svg {
+		width: auto;
+		min-width: 40px; /* Ensure minimum width for icons */
+		height: 50px;
+		fill: currentColor;
+	}
 }
 
 @media (max-width: 480px) {
@@ -795,5 +816,11 @@ body.light .card {
 		justify-content: center;
 		gap: 1rem;
 		margin-bottom: 0.5rem
+	}
+
+	.card-title svg {
+		width: 50%; 
+		height: 100px;
+		fill: currentColor;
 	}
 }
